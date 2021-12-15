@@ -442,39 +442,44 @@ export default class Login extends React.Component {
 										onKeyDown={this.onKeyDown}
 									/>
 									<br/>
-									<FormLine
-										labelWidth={8}
-										label="I am part of a company"
-										type={"checkbox"}
-										value={this.state.partOfCompany}
-										onChange={(v) => this.changeState("partOfCompany", v)}
-										onKeyDown={this.onKeyDown}
-									/>
-									<FormLine
-										labelWidth={4}
-										label="Company"
-										value={this.state.company}
-										onChange={(v) => this.changeState("company", v)}
-										onKeyDown={this.onKeyDown}
-										disabled={!this.state.partOfCompany}
-									/>
-									<FormLine
-										labelWidth={4}
-										label={"Department"}
-										type={"select"}
-										options={[
-											{ label: "TOP MANAGEMENT", value: "TOP MANAGEMENT" },
-											{ label: "HUMAN RESOURCE", value: "HUMAN RESOURCE" },
-											{ label: "MARKETING", value: "MARKETING" },
-											{ label: "FINANCE", value: "FINANCE" },
-											{ label: "OPERATION/PRODUCTION", value: "OPERATION/PRODUCTION" },
-											{ label: "INFORMATION TECHNOLOGY", value: "INFORMATION TECHNOLOGY" },
-											{ label: "OTHER", value: "OTHER" },
-										]}
-										value={this.state.companyDepartment}
-										onChange={(v) => this.changeState("companyDepartment", v)}
-										disabled={!this.state.partOfCompany}
-									/>
+									{this.props.settings
+										&& this.props.settings.ALLOW_ENTITY_REQUEST_ON_SUBSCRIPTION === "TRUE"
+										&& <div>
+											<FormLine
+												labelWidth={8}
+												label="I am part of a company"
+												type={"checkbox"}
+												value={this.state.partOfCompany}
+												onChange={(v) => this.changeState("partOfCompany", v)}
+												onKeyDown={this.onKeyDown}
+											/>
+											<FormLine
+												labelWidth={4}
+												label="Company"
+												value={this.state.company}
+												onChange={(v) => this.changeState("company", v)}
+												onKeyDown={this.onKeyDown}
+												disabled={!this.state.partOfCompany}
+											/>
+											<FormLine
+												labelWidth={4}
+												label={"Department"}
+												type={"select"}
+												options={[
+													{ label: "TOP MANAGEMENT", value: "TOP MANAGEMENT" },
+													{ label: "HUMAN RESOURCE", value: "HUMAN RESOURCE" },
+													{ label: "MARKETING", value: "MARKETING" },
+													{ label: "FINANCE", value: "FINANCE" },
+													{ label: "OPERATION/PRODUCTION", value: "OPERATION/PRODUCTION" },
+													{ label: "INFORMATION TECHNOLOGY", value: "INFORMATION TECHNOLOGY" },
+													{ label: "OTHER", value: "OTHER" },
+												]}
+												value={this.state.companyDepartment}
+												onChange={(v) => this.changeState("companyDepartment", v)}
+												disabled={!this.state.partOfCompany}
+											/>
+										</div>
+									}
 									<div className="right-buttons">
 										<button
 											className="blue-button"
