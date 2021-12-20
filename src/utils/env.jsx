@@ -9,9 +9,6 @@ export function getGlobalAppURL() {
 	if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname === "") {
 		return "http://localhost:3002/";
 	}
-	if (window.location.hostname.includes("test")) {
-		return "https://test.cy.lu/";
-	}
 	return "https://" + window.location.hostname.replace("www.", "").split(".").slice(1).join(".") + "/";
 }
 
